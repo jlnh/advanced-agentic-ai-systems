@@ -6,7 +6,8 @@ the internal workings of the ReAct agent execution process.
 """
 
 from langchain.agents import AgentExecutor
-from langchain.tools import Tool, PythonREPLTool
+from langchain.tools import Tool
+from langchain_experimental.tools import PythonREPLTool
 from langchain.prompts import PromptTemplate
 
 

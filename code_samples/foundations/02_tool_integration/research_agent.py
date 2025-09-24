@@ -10,6 +10,8 @@ from custom_tools import create_custom_tools
 from monitoring import ToolUsageTracker
 from security_utils import setup_secure_workspace
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 def create_research_agent(api_key: str = None, model: str = "gpt-3.5-turbo"):
     """Create and configure the multi-tool research agent"""

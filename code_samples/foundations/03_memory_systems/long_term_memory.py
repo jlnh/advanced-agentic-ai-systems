@@ -2,7 +2,7 @@
 Long-term memory implementation using vector storage for semantic search.
 """
 
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain.schema import Document
 from datetime import datetime, timedelta
 import json

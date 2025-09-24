@@ -42,7 +42,10 @@ pip install -r requirements.txt
 # Option 1: Environment variable
 export OPENAI_API_KEY="your-api-key-here"
 
-# Option 2: Or set in code (not recommended for production)
+# Option 2: Create .env file in project root
+echo "OPENAI_API_KEY=your-api-key-here" > .env
+
+# Option 3: Or set in code (not recommended for production)
 # Edit react_agent.py and uncomment the line in setup_environment()
 ```
 
@@ -60,10 +63,12 @@ python test_agent.py
 
 ### `react_agent.py`
 Core ReAct agent implementation with:
-- Environment setup
+- Environment setup with .env file support
 - Basic agent creation with GPT-4 and Python REPL
-- Error handling and retry logic
-- Simple test execution
+- Local prompt template option (`use_local_prompt=True`)
+- LangChain Hub integration (requires LANGCHAIN_API_KEY)
+- Error handling and retry logic with `robust_agent_call()`
+- Dual test execution (percentage calculation and quadratic equations)
 
 ### `test_agent.py`
 Interactive test suite featuring:
@@ -86,8 +91,11 @@ Debugging utilities including:
 ```python
 from react_agent import create_basic_agent, robust_agent_call
 
-# Create agent
+# Create agent (default uses LangChain Hub)
 agent = create_basic_agent()
+
+# Or use local prompt template
+agent = create_basic_agent(use_local_prompt=True)
 
 # Ask a question
 result = robust_agent_call(agent, "What is 25% of 1,380?")
@@ -118,11 +126,18 @@ python test_agent.py
 
 ### Agent Parameters
 ```python
+# LLM Configuration
 ChatOpenAI(
     model="gpt-4",        # Model choice (gpt-4, gpt-3.5-turbo)
     temperature=0         # 0 = deterministic, 1 = creative
 )
 
+# Agent Creation
+create_basic_agent(
+    use_local_prompt=True  # True: local template, False: LangChain Hub
+)
+
+# Executor Configuration
 AgentExecutor(
     max_iterations=5,     # Prevent infinite loops
     verbose=True         # Show reasoning process
@@ -141,7 +156,7 @@ AgentExecutor(
    ```
    Error: OpenAI API key not found
    ```
-   **Solution**: Set `OPENAI_API_KEY` environment variable
+   **Solution**: Set `OPENAI_API_KEY` in environment variable or .env file
 
 2. **Import Error**
    ```
@@ -155,7 +170,13 @@ AgentExecutor(
    ```
    **Solution**: Increase `max_iterations` or simplify query
 
-4. **Tool Selection Issues**
+4. **LangChain Hub Error**
+   ```
+   Error: Missing LangChain API key
+   ```
+   **Solution**: Set `LANGCHAIN_API_KEY` in .env file or use `use_local_prompt=True`
+
+5. **Tool Selection Issues**
    - Agent chooses wrong tools or fails to use tools
    - **Solution**: Use clearer tool descriptions (see `debug_utils.py`)
 
@@ -194,7 +215,8 @@ agent_executor = AgentExecutor(
 ### Advanced
 - "Generate first 20 Fibonacci numbers and find their sum"
 - "Create a list of prime numbers under 100 and calculate their average"
-- "Solve the quadratic equation x² - 5x + 6 = 0"
+- "Solve the quadratic equation x² - 5x + 6 = 0" (included in main execution)
+- "Calculate compound interest on $10000 at 4.5% compounded annually for 7 years"
 
 ## 🔄 Next Steps
 

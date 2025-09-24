@@ -2,13 +2,14 @@
 Main example script demonstrating the memory-enhanced agent system.
 """
 
-from langchain.llms import OpenAI
-from langchain.embeddings import OpenAIEmbeddings
+from langchain_community.llms import OpenAI
+from langchain_community.embeddings import OpenAIEmbeddings
 from short_term_memory import ShortTermMemory
 from long_term_memory import LongTermMemory
 from memory_enhanced_agent import MemoryEnhancedAgent
 from test_memory_system import run_all_tests
-
+from dotenv import load_dotenv
+load_dotenv()
 
 def initialize_memory_system():
     """Initialize the complete memory system with dependencies"""

@@ -39,7 +39,7 @@ The system consists of several modular components:
 ├── monitoring.py          # Usage tracking and performance monitoring
 ├── security_utils.py      # Security validation and workspace setup
 ├── performance_utils.py   # Caching and optimization utilities
-├── requirements.txt       # Python dependencies
+├── ../../../requirements/ # Python dependencies (base.txt updated with ddgs)
 └── README.md             # This file
 ```
 
@@ -47,7 +47,7 @@ The system consists of several modular components:
 
 1. **Install Dependencies**
    ```bash
-   pip install -r requirements.txt
+   pip install -r ../../../requirements/base.txt
    ```
 
 2. **Set Environment Variables**
@@ -224,6 +224,7 @@ Update validation rules in `security_utils.py` for your specific requirements.
 **File Permission Errors**: Ensure workspace directory has proper permissions
 **API Rate Limits**: Implement appropriate rate limiting and caching
 **Memory Usage**: Clear expired cache entries regularly
+**ReadFileTool Parameter Format**: May have parameter format issues in some cases
 
 ### Performance Tips
 
