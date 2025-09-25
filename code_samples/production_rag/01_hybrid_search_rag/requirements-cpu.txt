@@ -1,0 +1,26 @@
+# Core Dependencies
+numpy>=1.21.0
+python-dotenv>=1.0.0
+
+# Search and Ranking
+rank-bm25>=0.2.2
+
+# LangChain Components
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.10
+
+# Vector Store
+faiss-cpu>=1.7.4
+
+# OpenAI
+openai>=1.0.0
+
+# CPU-only PyTorch to avoid CUDA compatibility issues
+--index-url https://download.pytorch.org/whl/cpu
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Sentence Transformers (installs after PyTorch)
+sentence-transformers>=2.2.0
