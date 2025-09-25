@@ -55,3 +55,6 @@ data/
 # Cache
 .cache/
 .pytest_cache/
+
+# claude
+.claude/
