@@ -1,0 +1,26 @@
+# Core Dependencies
+numpy>=1.21.0
+python-dotenv>=1.0.0
+
+# Search and Ranking
+rank-bm25>=0.2.2
+sentence-transformers>=2.2.0
+
+# LangChain Components
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-community>=0.0.10
+
+# Vector Store
+faiss-cpu>=1.7.4
+
+# Optional: Use faiss-gpu instead of faiss-cpu for GPU acceleration
+# faiss-gpu>=1.7.4
+
+# OpenAI
+openai>=1.0.0
+
+# PyTorch (required by sentence-transformers) - CPU only to avoid CUDA compatibility issues
+torch>=1.13.0+cpu --index-url https://download.pytorch.org/whl/cpu
+torchvision>=0.14.0+cpu --index-url https://download.pytorch.org/whl/cpu
+torchaudio>=0.13.0+cpu --index-url https://download.pytorch.org/whl/cpu
